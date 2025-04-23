@@ -1,0 +1,15 @@
+
+<div *ngIf="isLogin==false" 
+  class="animate__animated animate__slideInLeft absolute inset-0 z-10"
+>
+  <app-login (log)="onLogin()"></app-login>
+</div>
+ 
+<div 
+  [ngClass]="{'animate__animated animate__slideInRight': isMenu}" 
+  *ngIf="isLogin==true" 
+  class="absolute inset-0 z-20"
+>
+ 
+  <app-menu (logout)="onLogout()"></app-menu> 
+</div>

@@ -1,0 +1,85 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Gráfico de Estado de las Salas (Donut) -->
+  <div class="bg-white p-4 shadow rounded-lg">
+    <apx-chart
+      [series]="[salasDisponibles, totalSalas - salasDisponibles]"
+      [chart]="{ 
+        type: 'donut',
+        height: 350
+      }"
+      [labels]="['Disponibles', 'Ocupadas']"
+      [title]="{ 
+        text: 'Estado de Salas',
+        align: 'center',
+        style: {
+          fontSize: '16px',
+          fontWeight: 'bold'
+        }
+      }"
+      [colors]="['#10B981', '#EF4444']"
+      [plotOptions]="{
+        pie: {
+          donut: {
+            size: '65%',
+            labels: {
+              show: true,
+              total: {
+                show: true,
+                label: 'Total',
+                color: '#6B7280'
+              }
+            }
+          }
+        }
+      }">
+    </apx-chart>
+  </div>
+
+  <!-- Gráfico de Total de Películas (Radial) -->
+  <div class="bg-white p-4 shadow rounded-lg">
+    <apx-chart
+      [series]="[totalPeliculas]"
+      [chart]="{
+        type: 'radialBar',
+        height: 350
+      }"
+      
+      [title]="{ 
+        text: 'Películas Registradas',
+        align: 'center',
+        style: {
+          fontSize: '16px',
+          fontWeight: 'bold'
+        }
+      }"
+      [colors]="['#6366F1']"
+      [stroke]="{
+        lineCap: 'round'
+      }">
+    </apx-chart>
+  </div>
+
+  <!-- Tarjeta de Resumen -->
+  <div class="bg-white p-6 shadow rounded-lg flex flex-col justify-center">
+    <div class="text-center">
+      <h3 class="text-lg font-semibold text-gray-800 mb-4">Resumen General</h3>
+      
+      <div class="space-y-4">
+        <div class="bg-green-50 p-4 rounded-lg">
+          <p class="text-sm text-green-700">Salas Disponibles</p>
+          <p class="text-2xl font-bold text-green-600">{{ salasDisponibles }}</p>
+        </div>
+        
+        <div class="bg-indigo-50 p-4 rounded-lg">
+          <p class="text-sm text-indigo-700">Total de Películas</p>
+          <p class="text-2xl font-bold text-indigo-600">{{ totalPeliculas }}</p>
+        </div>
+        
+        <div class="bg-gray-50 p-4 rounded-lg">
+          <p class="text-sm text-gray-700">Total de Salas</p>
+          <p class="text-2xl font-bold text-gray-600">{{ totalSalas }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

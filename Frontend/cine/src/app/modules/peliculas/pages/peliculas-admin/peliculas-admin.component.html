@@ -1,0 +1,107 @@
+<div class="container mx-auto px-4 py-8">
+    <!-- Tabs -->
+    <div class="border-b border-gray-200 mb-6">
+      <nav class="-mb-px flex space-x-8">
+        <button (click)="changeTab('peliculas')" 
+                [class]="activeTab === 'peliculas' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500'"
+                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+          Películas
+        </button>
+        <button (click)="changeTab('programaciones')"
+                [class]="activeTab === 'programaciones' ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500'"
+                class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+          Programación en Salas
+        </button>
+      </nav>
+    </div>
+  
+    <!-- Contenido de Películas -->
+    <div *ngIf="activeTab === 'programaciones'">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Cartelera de Cine</h2>
+        <button routerLink="/peliculas/nueva" class="btn btn-primary">
+          <i class="fas fa-plus mr-2"></i> Nueva Programación
+        </button>
+      </div>
+    
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let prog of programaciones" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          
+          <div class="h-64 bg-gray-200 overflow-hidden">
+            <img [src]="prog.photourl || 'assets/default-movie.jpg'" 
+                 [alt]="prog.pelicula.nombre"
+                 class="w-full h-full object-cover object-center">
+          </div>
+           
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ prog.pelicula.nombre }}</h3>
+            <p class="text-sm text-gray-600 mb-1">
+              <span class="font-medium">Duración:</span> {{ prog.pelicula.duracion }} minutos
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              <span class="font-medium">Sala:</span> {{ prog.sala?.nombre || 'No asignada' }}
+            </p>
+            <p class="text-sm text-gray-600 mb-1">
+              <span class="font-medium">Desde:</span> {{ prog.fecha_publicacion | date: 'mediumDate' }}
+            </p>
+            <p class="text-sm text-gray-600">
+              <span class="font-medium">Hasta:</span> {{ prog.fecha_fin | date: 'mediumDate' }}
+            </p>
+    
+            <div class="flex justify-between items-center mt-4">
+              <div class="flex space-x-3">
+                <button (click)="editarPeliculaSala(prog)" class="text-indigo-600 hover:text-indigo-800">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button (click)="confirmDeletePeliculaSala(prog)" class="text-red-600 hover:text-red-800">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  
+    <!-- Contenido de Programaciones -->
+    <div *ngIf="activeTab === 'peliculas'">
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-xl font-semibold text-gray-800">Listado de Películas</h2>
+        <button (click)="crearPelicula()" class="btn btn-primary">
+          <i class="fas fa-plus mr-2"></i> Nueva Película
+        </button>
+      </div>
+    
+      <!-- Grid de películas -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div *ngFor="let pelicula of peliculas" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+          <!-- Imagen de la película -->
+          <div class="h-64 bg-white flex items-center justify-center overflow-hidden">
+            <img [src]="pelicula.photourl || 'assets/default-movie.jpg'" 
+                 [alt]="pelicula.nombre"
+                 class="max-h-full max-w-full object-contain">
+          </div>
+          
+          
+          <!-- Contenido de la card -->
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ pelicula.nombre }}</h3>
+            <p class="text-sm text-gray-600 mb-2">
+              <span class="font-medium">Duración:</span> {{ pelicula.duracion }} minutos
+            </p>
+            <div class="flex justify-between items-center mt-4"> 
+              <div class="flex space-x-2">
+                <button (click)="editarPelicula(pelicula)" class="text-indigo-600 hover:text-indigo-800">
+                  <i class="fas fa-edit"></i>
+                </button>
+                <button (click)="confirmDeletePelicula(pelicula)" class="text-red-600 hover:text-red-800">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

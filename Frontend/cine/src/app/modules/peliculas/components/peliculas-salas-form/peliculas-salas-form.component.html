@@ -1,0 +1,45 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <!-- Selección de Película -->
+      <div class="form-group">
+        <label class="block text-sm font-medium text-gray-700">Película *</label>
+        <select formControlName="id_pelicula" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          <option value="">Seleccione una película</option>
+          <option *ngFor="let pelicula of peliculas" [value]="pelicula.id_pelicula">
+            {{ pelicula.nombre }} ({{ pelicula.duracion }} min)
+          </option>
+        </select>
+      </div>
+  
+      <!-- Selección de Sala -->
+      <div class="form-group">
+        <label class="block text-sm font-medium text-gray-700">Sala *</label>
+        <select formControlName="id_sala_cine" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+          <option value="">Seleccione una sala</option>
+          <option *ngFor="let sala of salas" [value]="sala.id_sala">
+            {{ sala.nombre }}
+          </option>
+        </select>
+      </div>
+  
+      <!-- Fechas -->
+      <div class="form-group">
+        <label class="block text-sm font-medium text-gray-700">Fecha Inicio *</label>
+        <input type="date" formControlName="fecha_publicacion" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+      </div>
+  
+      <div class="form-group">
+        <label class="block text-sm font-medium text-gray-700">Fecha Fin *</label>
+        <input type="date" formControlName="fecha_fin" 
+               class="mt-1 block w-full rounded-md border-gray-300 shadow-sm">
+      </div>
+    </div>
+  
+    <div class="flex justify-end space-x-3">
+      <button type="button" class="btn btn-secondary">Cancelar</button>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">
+        Programar Película
+      </button>
+    </div>
+  </form>

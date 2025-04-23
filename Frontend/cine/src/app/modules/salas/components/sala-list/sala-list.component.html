@@ -1,0 +1,22 @@
+<div class="bg-white shadow rounded-lg overflow-hidden">
+    <table class="min-w-full divide-y divide-gray-200">
+      <thead class="bg-gray-50">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Id</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+          <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        <tr *ngFor="let sala of salas" class="hover:bg-gray-50">
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ sala.id_sala }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ sala.nombre }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ sala.estado }}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+            <button (click)="editar.emit(sala)" class="text-blue-600 hover:text-blue-900 mr-3">Editar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
