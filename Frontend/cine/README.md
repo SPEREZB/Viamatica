@@ -30,7 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Permite visualizar peliculas, crear y actualizar peliculas
 Ver las carteleras
-Ver un listado de las salas, crearlas, actualizarlas y asignar una pelicula a dicha sala
+Ver un listado de las salas, crearlas, actualizarlas y asignar una pelicula a dicha sala.
 
 ## Tecnologias usadas
 @angular/core	^16.0.0	Núcleo del framework Angular, esencial para el funcionamiento de la aplicación.
@@ -50,6 +50,9 @@ tailwindcss	^3.4.16	Framework de utilidades para construir interfaces modernas y
 ## Instrucciones
 Clonar repositorio y para cada proyecto (Front y Back) usar comando npm i.
 Ejecutar Front con ng serve y Back con npm run start.
+
+## Consideraciones
+See agregaron campos para guardar las direcciones de imagenes para las peliculas y las salas de cine con el fin de mejorar la UI del sistema.
 
 ## Capturas
 
