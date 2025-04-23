@@ -53,14 +53,14 @@ Ejecutar Front con ng serve y Back con npm run start.
 
 ## Capturas
 
-![LOGIN](assets/images/login.png)
+![LOGIN](src/assets/images/LOGIN.png)
 
-![MENU](assets/images/menu.png)
+![MENU](src/assets/images/MENU.png)
 
-![DASHBOARD](assets/images/CAP1.png)
+![DASHBOARD](src/assets/images/CAP1.png)
 
-![Peliculas](assets/images/CAP2.png)
+![Peliculas](src/assets/images/CAP2.png)
 
-![Cartelera](assets/images/CAP3.png)
+![Cartelera](src/assets/images/CAP3.png)
 
-![Salas](assets/images/cap4.png)
+![Salas](src/assets/images/cap4.png)
